@@ -73,7 +73,7 @@ const ListPage = () => {
 
                 <Table className="table">
                     <tr>
-                        <td>Name/City</td>
+                        <td>{chooseItemLab=="Houses" ? "City" : "Name" }</td>
                         <td>Price</td>
                         <td>Description</td>
                         <td>Image</td>
