@@ -1,0 +1,180 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+.bodyLogin{
+    
+    margin: 0;
+    padding: 0;
+    background-image: url("/src/images/diamond.jpg");  
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 950px;
+    background-position: center;
+}
+
+.bg_Color{
+    width: 350px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:rgba(177, 177, 177, 0.8);
+    border-radius: 25% 10%;
+    
+}
+
+.bg_Color h3 {
+    color: white;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 30px;
+    text-align: center;
+    font-size: 20px;
+
+}
+
+.bg_Color input[type = "text"],.bg_Color input[type = "password"] {
+    
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 16px;
+    border: 2px solid #ffffff;
+    padding: 14px 10px;
+    width: 210px;
+    outline: none;
+    color: white;
+    border-radius: 25px;
+    
+}
+
+.bg_Color input[type = "text"]:focus,.bg_Color input[type = "password"]:focus {
+    width: 270px;
+    border-color: #12dada;
+}
+
+.bg_Color input[type = "submit"]{
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #12dada;
+    padding: 14px 40px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 25px;
+    transform: 0.25s;
+    cursor: pointer;
+}
+
+.buttonGreen{
+    text-decoration: none;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    background-color: #12be77;
+    width: 120px;
+    padding: 14px 40px;
+    outline: none;
+    color: white;
+    border-radius: 25px;
+    transform: 0.25s;
+    cursor: pointer;
+}
+
+.buttonGreen:hover{
+    text-decoration: none;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    background-color: #10a869;
+    padding: 14px 40px;
+    width: 120px;
+    outline: none;
+    color: white;
+    border-radius: 25px;
+    transform: 0.25s;
+    cursor: pointer;
+}
+
+.bg_Color input[type = "submit"]:hover{
+    background: #12dada;
+    font-weight: 600;
+}
+
+h1 {
+    text-align: center;
+    font-size: 60px;
+    color: white;
+    margin:auto;
+}
+
+.bg_Messenger {
+    background-color: #12dada;
+}
+
+.homePage_img {
+    margin: 0;
+    padding: 0;
+    background-image: url("https://cdn.pixabay.com/photo/2016/11/29/03/43/boat-1867124_1280.jpg");  
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 400px;
+    width: auto;
+    background-position: center;
+}
+
+.GreySection {
+    background-color: rgb(38,38,38);
+    color: white;
+}
+
+.footer {
+    background-color: #342525;
+    color: white;
+    clear: both;
+    position: relative;
+    height: 250px;
+    margin-top: 200px;
+}
+
+.ImgSelection {
+    width: 100%;
+    height: auto;
+}
+
+.leftText {
+    text-align: left;
+}
+
+.centerText {
+    text-align: center;
+}
+
+@media only screen and (max-width: 720px) {
+    .CenterTextGreySel {
+        margin: auto;
+        width: 80%;
+        padding: 15px;
+    }
+}
+
+@media only screen and (min-width: 720px) {
+    .CenterTextGreySel {
+        margin: auto;
+        width: 50%;
+        padding: 50px;
+    }
+}
+
+.navBarLink a {
+    padding-left: 10px;
+    color: white; 
+  }
