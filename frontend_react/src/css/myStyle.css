@@ -177,4 +177,14 @@ h1 {
 .navBarLink a {
     padding-left: 10px;
     color: white; 
-  }
+}
+
+.table {
+    color: white;
+    background-color: rgba(177, 177, 177, 0.151);;
+    border-radius: 5% 5% 0% 0%;
+}
+#list:hover {
+    background-color: rgba(219, 219, 219, 0.151);;;
+    border-radius: 5%;
+}

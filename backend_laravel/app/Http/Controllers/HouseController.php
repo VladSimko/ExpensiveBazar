@@ -20,4 +20,9 @@ class HouseController extends Controller
         $house->save();
         return $house;
     }
+
+    function listHouse()
+    {
+        return House::all();
+    }
 }

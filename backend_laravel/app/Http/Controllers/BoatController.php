@@ -20,6 +20,9 @@ class BoatController extends Controller
         $boat->description = $req->input('description');
         $boat->save();
         return $boat;
-
+    }
+    function listBoat()
+    {
+        return Boat::all();
     }
 }

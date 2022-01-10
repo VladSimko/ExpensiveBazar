@@ -31,7 +31,7 @@ const LoginPage = () =>{
         localStorage.setItem("user-info",JSON.stringify(result)) 
         let user=JSON.parse(localStorage.getItem('user-info'))
         
-        if(user.name == undefined){
+        if(user.name === undefined){
             alert("Wrong email or password")
             localStorage.clear();
         }else{

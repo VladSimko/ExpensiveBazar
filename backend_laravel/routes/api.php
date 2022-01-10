@@ -26,3 +26,6 @@ Route::post('login',[UserController::class,'login']);
 Route::post('addcar',[CarController::class,'addCar']);
 Route::post('addhouse',[HouseController::class,'addHouse']);
 Route::post('addboat',[BoatController::class,'addBoat']);
+Route::get('listcar',[CarController::class,'listCar']);
+Route::get('listhouse',[HouseController::class,'listHouse']);
+Route::get('listboat',[BoatController::class,'listBoat']);

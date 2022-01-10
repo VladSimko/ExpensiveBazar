@@ -22,4 +22,8 @@ class CarController extends Controller
         $car->save();
         return $car;
     }
+    function listCar()
+    {
+        return Car::all();
+    }
 }
