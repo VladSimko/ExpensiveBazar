@@ -2,26 +2,27 @@ import { useState } from "react"
 import Navigation from "../Components/Navigation";
 import Footer from "../Components/Footer"
 
-const AddCarPage = () => {
+const AddHousePage = () => {
 
-        const [name, setName] = useState("");
         const [file, setFile] = useState("");
         const [price, setPrice] = useState("");
         const [description, setDescription] = useState("");
-        const [model, setModel] = useState("");
+        const [city, setCity] = useState("");
+        const [size, setSize] = useState("");
+
         let user = JSON.parse(localStorage.getItem('user-info'))
 
-        async function addCar() {
+        async function addHouse() {
                 const formData = new FormData();
                 formData.append('file', file);
                 formData.append('price', price);
-                formData.append('name', name);
+                formData.append('city', city);
                 formData.append('description', description);
-                formData.append('model', model);
+                formData.append('size', size);
                 formData.append('user_id', user.id);
 
-                if (!isNaN(price)) {
-                        let result = await fetch("http://localhost:8000/api/addcar", {
+                if (!isNaN(price) && !isNaN(size)) {
+                        let result = await fetch("http://localhost:8000/api/addhouse", {
                                 method: 'POST',
                                 body: formData
                         });
@@ -37,16 +38,16 @@ const AddCarPage = () => {
                         <br /><br /><br />
                         <section>
                                 <div className="container">
-                                        <h2>Add CAR</h2>
+                                        <h2>Add HOUSE</h2>
                                         <br />
                                         <div className="GreySection" >
                                                 <div className="row">
                                                         <div className="col-sm-6 CenterTextGreySel">
-                                                                <input type="text" className="form-control" placeholder="name"
-                                                                        onChange={(e) => setName(e.target.value)}
+                                                                <input type="text" className="form-control" placeholder="city"
+                                                                        onChange={(e) => setCity(e.target.value)}
                                                                 /> <br />
-                                                                <input type="text" className="form-control" placeholder="model"
-                                                                        onChange={(e) => setModel(e.target.value)}
+                                                                <input type="text" className="form-control" placeholder="size"
+                                                                        onChange={(e) => setSize(e.target.value)}
                                                                 /> <br />
                                                                 <input type="file" className="form-control" placeholder="file"
                                                                         onChange={(e) => setFile(e.target.files[0])} /> <br />
@@ -54,10 +55,10 @@ const AddCarPage = () => {
                                                                         onChange={(e) => setPrice(e.target.value)} /> <br />
                                                                 <input type="text" className="form-control" placeholder="description"
                                                                         onChange={(e) => setDescription(e.target.value)} />
-                                                                <button onClick={addCar} className="btn btn-primary">Add Car</button>
+                                                                <button onClick={addHouse} className="btn btn-primary">Add house</button>
                                                         </div>
                                                         <div class="col-sm-6">
-                                                                <img src="https://cdn.pixabay.com/photo/2016/05/06/16/32/car-1376190_1280.jpg" className="ImgSelection" alt="car" />
+                                                                <img src="https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_1280.jpg" className="ImgSelection" alt="house" />
                                                         </div>
                                                 </div>
                                         </div>
@@ -70,4 +71,4 @@ const AddCarPage = () => {
         )
 }
 
-export default AddCarPage;
+export default AddHousePage;

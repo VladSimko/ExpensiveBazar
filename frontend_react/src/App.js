@@ -11,6 +11,8 @@ import ListPage from './Pages/ListPage';
 import './css/myStyle.css';
 import ProtectedPage from './Pages/ProtectedPage';
 import AddCarPage from './Pages/AddCarPage';
+import AddHousePage from './Pages/AddHousePage';
+import AddBoatPage from './Pages/AddBoatPage';
 
 function App() {
   return (
@@ -31,6 +33,12 @@ function App() {
         </Route>
         <Route path="/addcarpage">
             <ProtectedPage Cmp={AddCarPage}/>
+        </Route>
+        <Route path="/addhousepage">
+            <ProtectedPage Cmp={AddHousePage}/>
+        </Route>
+        <Route path="/addboatpage">
+            <ProtectedPage Cmp={AddBoatPage}/>
         </Route>
       </BrowserRouter>
       
