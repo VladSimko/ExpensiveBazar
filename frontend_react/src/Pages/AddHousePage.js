@@ -9,6 +9,7 @@ const AddHousePage = () => {
         const [description, setDescription] = useState("");
         const [city, setCity] = useState("");
         const [size, setSize] = useState("");
+        const [kontakt, setKontakt] = useState("");
 
         let user = JSON.parse(localStorage.getItem('user-info'))
 
@@ -19,6 +20,7 @@ const AddHousePage = () => {
                 formData.append('city', city);
                 formData.append('description', description);
                 formData.append('size', size);
+                formData.append('kontakt', kontakt);
                 formData.append('user_id', user.id);
 
                 if (!isNaN(price) && !isNaN(size)) {
@@ -53,6 +55,8 @@ const AddHousePage = () => {
                                                                         onChange={(e) => setFile(e.target.files[0])} /> <br />
                                                                 <input type="text" className="form-control" placeholder="price"
                                                                         onChange={(e) => setPrice(e.target.value)} /> <br />
+                                                                        <input type="text" className="form-control" placeholder="kontakt"
+                                                                        onChange={(e) => setKontakt(e.target.value)} /> <br />
                                                                 <input type="text" className="form-control" placeholder="description"
                                                                         onChange={(e) => setDescription(e.target.value)} />
                                                                 <button onClick={addHouse} className="btn btn-primary">Add house</button>

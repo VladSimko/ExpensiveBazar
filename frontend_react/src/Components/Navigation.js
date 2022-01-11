@@ -22,11 +22,13 @@ const Navigation = () => {
             localStorage.getItem('user-info') ?
               <>
                 <Link to="/listpage">Browse</Link>
+                <Link to="/mylist">My List</Link>
                 <NavDropdown title="Add" id="navStyle">
                    <NavDropdown.Item id="navStyle2" ><Link to="/addcarpage">CAR</Link></NavDropdown.Item> 
                    <NavDropdown.Item id="navStyle2" ><Link to="/addboatpage">BOAT</Link></NavDropdown.Item> 
                    <NavDropdown.Item id="navStyle2" ><Link to="/addhousepage">HOUSE</Link></NavDropdown.Item> 
                 </NavDropdown>
+                
                 
               </>
               :

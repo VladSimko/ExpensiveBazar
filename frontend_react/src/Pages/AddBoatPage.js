@@ -9,6 +9,7 @@ const AddBoatPage = () => {
         const [description, setDescription] = useState("");
         const [size, setSize] = useState("");
         const [name, setName] = useState("");
+        const [kontakt, setKontakt] = useState("");
 
         let user = JSON.parse(localStorage.getItem('user-info'))
 
@@ -19,6 +20,7 @@ const AddBoatPage = () => {
                 formData.append('description', description);
                 formData.append('size', size);
                 formData.append('name', name);
+                formData.append('kontakt', kontakt);
                 formData.append('user_id', user.id);
 
                 if (!isNaN(price) && !isNaN(size)) {
@@ -53,6 +55,8 @@ const AddBoatPage = () => {
                                                                         onChange={(e) => setFile(e.target.files[0])} /> <br />
                                                                 <input type="text" className="form-control" placeholder="price"
                                                                         onChange={(e) => setPrice(e.target.value)} /> <br />
+                                                                        <input type="text" className="form-control" placeholder="kontakt"
+                                                                        onChange={(e) => setKontakt(e.target.value)} /> <br />
                                                                 <input type="text" className="form-control" placeholder="description"
                                                                         onChange={(e) => setDescription(e.target.value)} />
                                                                 <button onClick={addBoat} className="btn btn-primary">Add boat</button>

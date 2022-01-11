@@ -17,6 +17,7 @@ class HouseController extends Controller
         $house->price = $req->input('price');
         $house->file_path=$req->file('file')->store('bazar');
         $house->description = $req->input('description');
+        $house->kontakt = $req->input('kontakt');
         $house->save();
         return $house;
     }
@@ -24,5 +25,21 @@ class HouseController extends Controller
     function listHouse()
     {
         return House::all();
+    }
+
+    function getHouse($id)
+    {
+        return House::find($id);
+    }
+    function deleteHouse($id)
+    {
+        $result = House::where('id',$id)->delete();
+        if($result)
+        {
+            return ["result"=>"delete"];
+        }
+        else {
+            return ["result"=> "delete fail"];
+        }
     }
 }

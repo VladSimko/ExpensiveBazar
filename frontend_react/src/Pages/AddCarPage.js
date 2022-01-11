@@ -7,6 +7,7 @@ const AddCarPage = () => {
         const [name, setName] = useState("");
         const [file, setFile] = useState("");
         const [price, setPrice] = useState("");
+        const [kontakt, setKontakt] = useState("");
         const [description, setDescription] = useState("");
         const [model, setModel] = useState("");
         let user = JSON.parse(localStorage.getItem('user-info'))
@@ -18,6 +19,7 @@ const AddCarPage = () => {
                 formData.append('name', name);
                 formData.append('description', description);
                 formData.append('model', model);
+                formData.append('kontakt', kontakt);
                 formData.append('user_id', user.id);
 
                 if (!isNaN(price)) {
@@ -52,6 +54,8 @@ const AddCarPage = () => {
                                                                         onChange={(e) => setFile(e.target.files[0])} /> <br />
                                                                 <input type="text" className="form-control" placeholder="price"
                                                                         onChange={(e) => setPrice(e.target.value)} /> <br />
+                                                                <input type="text" className="form-control" placeholder="kontakt"
+                                                                        onChange={(e) => setKontakt(e.target.value)} /> <br />
                                                                 <input type="text" className="form-control" placeholder="description"
                                                                         onChange={(e) => setDescription(e.target.value)} />
                                                                 <button onClick={addCar} className="btn btn-primary">Add Car</button>

@@ -18,12 +18,32 @@ class CarController extends Controller
         $car->model = $req->input('model');
         $car->description = $req->input('description');
         $car->price = $req->input('price');
+        $car->kontakt = $req->input('kontakt');
         $car->file_path=$req->file('file')->store('bazar');
         $car->save();
         return $car;
     }
+
     function listCar()
     {
         return Car::all();
     }
+
+    function getCar($id)
+    {
+        return Car::find($id);
+    }
+
+    function deleteCar($id)
+    {
+        $result = Car::where('id',$id)->delete();
+            if($result)
+            {
+                return ["result"=>"delete"];
+            }
+            else {
+                return ["result"=> "delete fail"];
+            }
+    }
+
 }

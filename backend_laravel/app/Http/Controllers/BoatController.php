@@ -18,11 +18,27 @@ class BoatController extends Controller
         $boat->price = $req->input('price');
         $boat->file_path=$req->file('file')->store('bazar');
         $boat->description = $req->input('description');
+        $boat->kontakt = $req->input('kontakt');
         $boat->save();
         return $boat;
     }
     function listBoat()
     {
         return Boat::all();
+    }
+    function getBoat($id)
+    {
+        return Boat::find($id);
+    }
+    function deleteBoat($id)
+    {
+        $result = Boat::where('id',$id)->delete();
+        if($result)
+        {
+            return ["result"=>"delete"];
+        }
+        else {
+            return ["result"=> "delete fail"];
+        }
     }
 }

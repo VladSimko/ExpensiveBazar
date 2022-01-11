@@ -29,3 +29,10 @@ Route::post('addboat',[BoatController::class,'addBoat']);
 Route::get('listcar',[CarController::class,'listCar']);
 Route::get('listhouse',[HouseController::class,'listHouse']);
 Route::get('listboat',[BoatController::class,'listBoat']);
+Route::get('car/{id}',[CarController::class,'getCar']);
+Route::get('house/{id}',[HouseController::class,'getHouse']);
+Route::get('boat/{id}',[BoatController::class,'getBoat']);
+Route::delete('deletecar/{id}',[CarController::class,'deleteCar']);
+Route::delete('deletehouse/{id}',[HouseController::class,'deleteHouse']);
+Route::delete('deleteboat/{id}',[BoatController::class,'deleteBoat']);
+
