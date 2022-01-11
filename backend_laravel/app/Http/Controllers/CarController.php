@@ -46,4 +46,20 @@ class CarController extends Controller
             }
     }
 
+    function updateCar($id, Request $req)
+    {
+        $car = Car::find($id);
+        $car->name = $req->input('name');
+        $car->model = $req->input('model');
+        $car->description = $req->input('description');
+        $car->price = $req->input('price');
+        $car->kontakt = $req->input('kontakt');
+        if($req->file('file'))
+        {
+            $car->file_path=$req->file('file')->store('bazar');
+        }
+        $car->save();
+        return $car;
+    }
+
 }

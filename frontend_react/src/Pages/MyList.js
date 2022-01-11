@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Row, Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import Navigation from "../Components/Navigation";
 
 
@@ -74,7 +75,7 @@ const MyList = () => {
                                                 <p><b>Contact:</b> {item.kontakt}</p>
                                                 <p>{item.description}</p>
                                             </Card.Text>
-                                            <Button variant="warning">Update</Button>
+                                           <Link to={"updatecar/"+item.id}><Button variant="warning">Update</Button></Link>
                                             <Button variant="danger" onClick={()=>deleteCard("http://127.0.0.1:8000/api/deletecar/"+item.id)}>Delete</Button>
                                         </Card.Body>
                                     </Card> : null
@@ -97,7 +98,7 @@ const MyList = () => {
                                                 <p><b>Contact:</b> {item.kontakt}</p>
                                                 <p>{item.description}</p>
                                             </Card.Text>
-                                            <Button variant="warning">Update</Button>
+                                            <Link to={"updatehouse/"+item.id}><Button variant="warning">Update</Button></Link>
                                             <Button variant="danger" onClick={()=>deleteCard("http://127.0.0.1:8000/api/deletehouse/"+item.id)}>Delete</Button>
                                         </Card.Body>
                                     </Card> : null
@@ -120,7 +121,7 @@ const MyList = () => {
                                                 <p><b>Contact:</b> {item.kontakt}</p>
                                                 <p>{item.description}</p>
                                             </Card.Text>
-                                            <Button variant="warning">Update</Button>
+                                            <Link to={"updateboat/"+item.id}><Button variant="warning">Update</Button></Link>
                                             <Button variant="danger" onClick={()=>deleteCard("http://127.0.0.1:8000/api/deleteboat/"+item.id)}>Delete</Button>
                                         </Card.Body>
                                     </Card> : null

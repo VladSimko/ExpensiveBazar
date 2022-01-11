@@ -203,3 +203,12 @@ h1 {
 .cardBody {
     background-color: grey;
 }
+
+.bigUpdateCard{
+    background-color: grey;
+    border-radius: 5% 5% 5% 5%;
+}
+
+.FloatingText {
+    color: black;
+}

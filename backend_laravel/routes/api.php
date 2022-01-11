@@ -35,4 +35,6 @@ Route::get('boat/{id}',[BoatController::class,'getBoat']);
 Route::delete('deletecar/{id}',[CarController::class,'deleteCar']);
 Route::delete('deletehouse/{id}',[HouseController::class,'deleteHouse']);
 Route::delete('deleteboat/{id}',[BoatController::class,'deleteBoat']);
-
+Route::put('updatecar/{id}',[CarController::class,'updateCar']);
+Route::put('updatehouse/{id}',[HouseController::class,'updateHouse']);
+Route::put('updateboat/{id}',[BoatController::class,'updateBoat']);

@@ -25,7 +25,8 @@ const AddCarPage = () => {
                 if (!isNaN(price)) {
                         let result = await fetch("http://localhost:8000/api/addcar", {
                                 method: 'POST',
-                                body: formData
+                                body: formData,
+                                
                         });
                         alert("Data has been saved");
                 } else {

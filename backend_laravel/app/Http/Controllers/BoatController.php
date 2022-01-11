@@ -41,4 +41,19 @@ class BoatController extends Controller
             return ["result"=> "delete fail"];
         }
     }
+    function updateBoat($id, Request $req)
+    {
+        $boat = Boat::find($id);
+        $boat->name = $req->input('name');
+        $boat->size = $req->input('size');
+        $boat->description = $req->input('description');
+        $boat->price = $req->input('price');
+        $boat->kontakt = $req->input('kontakt');
+        if($req->file('file'))
+        {
+            $boat->file_path=$req->file('file')->store('bazar');
+        }
+        $boat->save();
+        return $boat;
+    }
 }

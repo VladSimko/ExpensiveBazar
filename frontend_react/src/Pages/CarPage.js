@@ -10,7 +10,7 @@ const CarPage = (props) => {
 
     const [data, setData] = useState([]);
 
-    useEffect(async () => {
+    useEffect(async() => {
         let result = await fetch("http://127.0.0.1:8000/api/car/" + props.match.params.id);
         result = await result.json();
         setData(result);
@@ -25,7 +25,7 @@ const CarPage = (props) => {
                     <Col></Col>
                     <Col>
                         <Card style={{ width: '18rem' }}>
-                            <Card.Img variant="top" src={"http://127.0.0.1:8000/" + data.file_path} />
+                            <Card.Img variant="top" src={"http://localhost:8000/" + data.file_path} />
                             <Card.Body className="cardBody">
                                 <Card.Title>{data.name} {data.model}</Card.Title>
                                 <hr />
@@ -40,7 +40,6 @@ const CarPage = (props) => {
                     <Col></Col>
                 </Row>
             </Container>
-
 
         </>
     )

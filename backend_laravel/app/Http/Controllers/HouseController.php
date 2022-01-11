@@ -42,4 +42,19 @@ class HouseController extends Controller
             return ["result"=> "delete fail"];
         }
     }
+    function updateHouse($id, Request $req)
+    {
+        $house = House::find($id);
+        $house->city = $req->input('city');
+        $house->size = $req->input('size');
+        $house->description = $req->input('description');
+        $house->price = $req->input('price');
+        $house->kontakt = $req->input('kontakt');
+        if($req->file('file'))
+        {
+            $house->file_path=$req->file('file')->store('bazar');
+        }
+        $house->save();
+        return $house;
+    }
 }
