@@ -22,7 +22,7 @@ const AddCarPage = () => {
                 formData.append('kontakt', kontakt);
                 formData.append('user_id', user.id);
 
-                if (!isNaN(price)) {
+                if (!isNaN(price) && file && price && description && name && name && kontakt) {
                         let result = await fetch("http://localhost:8000/api/addcar", {
                                 method: 'POST',
                                 body: formData,
@@ -30,7 +30,7 @@ const AddCarPage = () => {
                         });
                         alert("Data has been saved");
                 } else {
-                        alert("Wrong DATA");
+                        alert("Wrong DATA or everything must be filled ");
                 }
         }
 

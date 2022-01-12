@@ -11,9 +11,8 @@ const ProfilPage = () => {
     const history = useHistory();
     let user = JSON.parse(localStorage.getItem('user-info'))
 
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [name, setName] = useState(user.name);
+    const [email, setEmail] = useState(user.email);
 
     async function deleteUser() {
         let result = await fetch("http://127.0.0.1:8000/api/deleteuser/" + user.id, {
@@ -28,7 +27,6 @@ const ProfilPage = () => {
         const formData = new FormData();
         formData.append('name', name);
         formData.append('email', email);
-        formData.append('password', password);
         let result = await fetch("http://127.0.0.1:8000/api/updateuser/" + user.id + "?_method=PUT", {
             method: 'POST',
             body: formData,
@@ -52,9 +50,7 @@ const ProfilPage = () => {
                             onChange={(e) => setName(e.target.value)} /> <br />
                         <input type="text" className="form-control" defaultValue={user.email} placeholder="Email"
                             onChange={(e) => setEmail(e.target.value)} /> <br />
-                        <input type="text" className="form-control" placeholder="Password"
-                            onChange={(e) => setPassword(e.target.value)} /> <br />
-                        <a onClick={updateUser} className="upgradeBtn">Upgrade</a> <br />
+                        <a onClick={updateUser} className="upgradeBtn">Update</a> <br />
                         <a onClick={deleteUser} className="deleteBtn">Delete</a>
 
                     </div>

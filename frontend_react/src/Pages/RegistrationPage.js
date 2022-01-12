@@ -24,10 +24,9 @@ const RegistrationPage = () => {
         let allUsers = await fetch("http://127.0.0.1:8000/api/allusers");
         allUsers = await allUsers.json();
         let users = JSON.stringify(allUsers);
-
         if (!email.includes('@')) {
             alert('Wrong email');
-        } else if (password.toString().length <= 8) {
+        } else if (password.toString().length < 8) {
             alert('Lenght of password must be 8 charakters or more');
         } else {
             if (!users.includes(email)) {
@@ -42,11 +41,11 @@ const RegistrationPage = () => {
                 result = await result.json();
                 localStorage.setItem("user-info", JSON.stringify(result));
                 history.push("/listpage");
-                alert('zaregistrovane');
             } else {
                 alert('Email exists');
             }
         }
+
     }
 
     return (

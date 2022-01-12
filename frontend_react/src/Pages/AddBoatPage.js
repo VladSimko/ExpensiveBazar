@@ -23,14 +23,14 @@ const AddBoatPage = () => {
                 formData.append('kontakt', kontakt);
                 formData.append('user_id', user.id);
 
-                if (!isNaN(price) && !isNaN(size)) {
+                if (!isNaN(price) && !isNaN(size) && file && price && description && size && name && kontakt ) {
                         let result = await fetch("http://localhost:8000/api/addboat", {
                                 method: 'POST',
                                 body: formData
                         });
                         alert("Data has been saved");
                 } else {
-                        alert("Wrong DATA");
+                        alert("Wrong DATA or everything must be filled ");
                 }
         }
 

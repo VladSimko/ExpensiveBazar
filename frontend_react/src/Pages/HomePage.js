@@ -50,20 +50,20 @@ const HomePage = () => {
                     <div className="row">
                         <div className="col-md-3 col-sm-6">
                             <img src="https://cdn.pixabay.com/photo/2015/07/11/23/13/mercedes-benz-841465_1280.jpg" alt="image" className="img-fluid" />
-                            <img src="https://cdn.pixabay.com/photo/2015/07/11/23/13/mercedes-benz-841465_1280.jpg" alt="image" className="img-fluid" />
+                            <img src="https://cdn.pixabay.com/photo/2016/02/13/13/11/oldtimer-1197800_1280.jpg" alt="image" className="img-fluid" />
 
                         </div>
                         <div class="col-md-3 col-sm-6">
-                            <img src="https://cdn.pixabay.com/photo/2015/07/11/23/13/mercedes-benz-841465_1280.jpg" alt="image" className="img-fluid" />
-                            <img src="https://cdn.pixabay.com/photo/2015/07/11/23/13/mercedes-benz-841465_1280.jpg" alt="image" className="img-fluid" />
+                            <img src="https://cdn.pixabay.com/photo/2017/03/27/14/56/auto-2179220_1280.jpg" alt="image" className="img-fluid" />
+                            <img src="https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg" alt="image" className="img-fluid" />
                         </div>
                         <div class="col-md-3 col-sm-6">
-                            <img src="https://cdn.pixabay.com/photo/2015/07/11/23/13/mercedes-benz-841465_1280.jpg" alt="image" className="img-fluid" />
-                            <img src="https://cdn.pixabay.com/photo/2015/07/11/23/13/mercedes-benz-841465_1280.jpg" alt="image" className="img-fluid" />
+                            <img src="https://cdn.pixabay.com/photo/2014/11/21/17/17/house-540796_1280.jpg" alt="image" className="img-fluid" />
+                            <img src="https://cdn.pixabay.com/photo/2019/03/01/18/52/house-4028391_1280.jpg" alt="image" className="img-fluid" />
                         </div>
                         <div class="col-md-3 col-sm-6">
-                            <img src="https://cdn.pixabay.com/photo/2015/07/11/23/13/mercedes-benz-841465_1280.jpg" alt="image" className="img-fluid" />
-                            <img src="https://cdn.pixabay.com/photo/2015/07/11/23/13/mercedes-benz-841465_1280.jpg" alt="image" className="img-fluid" />
+                            <img src="https://cdn.pixabay.com/photo/2018/01/05/02/50/boat-3062045_1280.jpg" alt="image" className="img-fluid" />
+                            <img src="https://cdn.pixabay.com/photo/2016/12/18/14/31/lake-1915846_1280.jpg" alt="image" className="img-fluid" />
                         </div>
                     </div>
                 </div>
