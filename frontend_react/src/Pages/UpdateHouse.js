@@ -21,7 +21,13 @@ function UpdateHouse(props) {
         let result = await fetch("http://localhost:8000/api/house/" + props.match.params.id);
         result = await result.json();
         setData(result);
-    })
+        setCity(result.city);
+        setPrice(result.price);
+        setKontakt(result.kontakt);
+        setDescription(result.description);
+        setSize(result.size);
+        setFile(result.File);
+    },[])
 
     async function updateHouse(id) {
         const formData = new FormData();
@@ -60,7 +66,7 @@ function UpdateHouse(props) {
                         <input type="text" className="form-control" defaultValue={data.kontakt} placeholder="kontakt" onChange={(e) => setKontakt(e.target.value)} /> <br />
                         <input type="text" className="form-control" defaultValue={data.description} placeholder="description" onChange={(e) => setDescription(e.target.value)} /><br />
 
-                        <button onClick={() => updateHouse(data.id)} className="btn btn-primary">update Car</button>
+                        <button onClick={() => updateHouse(data.id)} className="btn btn-primary">update House</button>
 
                     </Col>
                     <Col></Col>

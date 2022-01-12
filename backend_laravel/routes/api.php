@@ -38,3 +38,5 @@ Route::delete('deleteboat/{id}',[BoatController::class,'deleteBoat']);
 Route::put('updatecar/{id}',[CarController::class,'updateCar']);
 Route::put('updatehouse/{id}',[HouseController::class,'updateHouse']);
 Route::put('updateboat/{id}',[BoatController::class,'updateBoat']);
+Route::delete('deleteuser/{id}',[UserController::class,'deleteUser']);
+Route::put('updateuser/{id}',[UserController::class,'updateUser']);

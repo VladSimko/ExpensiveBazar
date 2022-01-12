@@ -41,6 +41,7 @@ const Navigation = () => {
         {
           localStorage.getItem('user-info') ?
           <NavDropdown title={user && user.name} id="nav-dropdown">
+            <NavDropdown.Item><Link to="/profilpage">Profil</Link></NavDropdown.Item>
             <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
           </NavDropdown>
           : null

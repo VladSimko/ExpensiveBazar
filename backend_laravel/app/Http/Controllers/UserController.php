@@ -34,4 +34,29 @@ class UserController extends Controller
         }
         
     } 
+
+    function deleteUser($id)
+    {
+        $result = User::where('id',$id)->delete();
+            if($result)
+            {
+                return ["result"=>"delete"];
+            }
+            else {
+                return ["result"=> "delete fail"];
+            }
+    }
+
+    function updateUser($id, Request $req)
+    {
+        $user = User::find($id);
+        $user->name = $req->input('name');
+        $user->email = $req->input('email');
+        $user->password= Hash::make($req->input('password'));
+        $user->save();
+        return $user;
+    }
+
+
+
 }

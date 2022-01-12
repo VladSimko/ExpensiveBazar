@@ -57,8 +57,9 @@ const MyList = () => {
     return (
         <>
             <Navigation />
-            <h1>My list</h1>
             <br />
+            <h1>My list</h1>
+            <hr />
             <Container>
                 <Row>
                     <Col sm={12} md={6} lg={4}>
