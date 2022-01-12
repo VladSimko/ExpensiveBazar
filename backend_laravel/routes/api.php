@@ -40,3 +40,4 @@ Route::put('updatehouse/{id}',[HouseController::class,'updateHouse']);
 Route::put('updateboat/{id}',[BoatController::class,'updateBoat']);
 Route::delete('deleteuser/{id}',[UserController::class,'deleteUser']);
 Route::put('updateuser/{id}',[UserController::class,'updateUser']);
+Route::get('allusers',[UserController::class,'allUsers']);

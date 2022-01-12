@@ -10,13 +10,13 @@ const Navigation = () => {
   function logout()
   {
     localStorage.clear();
-    history.push("/");
+    history.push("/loginpage");
   }
 
   return (
     <>
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="/" className="WhiteBorder">E-Bazar</Navbar.Brand>
+        <Navbar.Brand className="WhiteBorder"><Link id="e-bazar" to={"/"}>E-Bazar</Link></Navbar.Brand>
         <Nav className="me-auto navBarLink">
           {
             localStorage.getItem('user-info') ?
@@ -41,8 +41,8 @@ const Navigation = () => {
         {
           localStorage.getItem('user-info') ?
           <NavDropdown title={user && user.name} id="nav-dropdown">
-            <NavDropdown.Item><Link to="/profilpage">Profil</Link></NavDropdown.Item>
-            <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
+            <NavDropdown.Item id="navStyle2"><Link to="/profilpage">Profil</Link></NavDropdown.Item>
+            <NavDropdown.Item  id="navStyle2" onClick={logout}>Logout</NavDropdown.Item>
           </NavDropdown>
           : null
         }

@@ -13,12 +13,18 @@ class UserController extends Controller
 
     function register(Request $req)
     {
-        $user = new User;
-        $user->name= $req->input('name');
-        $user->email= $req->input('email');
-        $user->password= Hash::make($req->input('password'));
-        $user->save();
-        return $user;
+        $user = User::where('email', '=', Input::get('email'))->first();
+        if ($user === null) {
+            $user = new User;
+            $user->name= $req->input('name');
+            $user->email= $req->input('email');
+            $user->password= Hash::make($req->input('password'));
+            $user->save();
+            return $user;
+        } else {
+            return ["error"=>"Email Exists"];
+        }
+        
         
     }
     function login(Request $req)
@@ -55,6 +61,11 @@ class UserController extends Controller
         $user->password= Hash::make($req->input('password'));
         $user->save();
         return $user;
+    }
+
+    function allUsers()
+    {
+        return User::all();
     }
 
 

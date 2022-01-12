@@ -62,16 +62,7 @@ const ListPage = () => {
             <Container>
                 <Row>
                     <Col sm={2}>Choose item: </Col>
-                    <Col sm={2} id="chooseItem"><Select styles={customStyles} options={listOfItems} onChange={(e) => showData(e)} /></Col>
-                    
-                        {/* <Form.Select aria-label="Default select example">
-                            <option value="0" onChange={(e) => showData(0)}>CAR</option>
-                            <option value="1">HOUSE</option>
-                            <option value="2">BOAT</option>
-                        </Form.Select> */}
-                   
-                    {/* <Col sm={2}><Button onClick={() => showData(1)}>HOUSES</Button></Col> */}
-                    
+                    <Col sm={2} id="chooseItem"><Select styles={customStyles} options={listOfItems} onChange={(e) => showData(e)} /></Col>                          
                 </Row>
                 <br />
 
@@ -84,7 +75,6 @@ const ListPage = () => {
                         <td>Description</td>
                         <td>Image</td>
                     </tr>
-                    {/* {chooseItemLab == "car" ? <Spinner animation="border" variant="light" /> : null } */}
                     {
                         data.map((item) =>
                             <Link to={chooseItemLab + "page/" + item.id} className='text-link'>
