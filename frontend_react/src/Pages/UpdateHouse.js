@@ -27,21 +27,44 @@ function UpdateHouse(props) {
         setDescription(result.description);
         setSize(result.size);
         setFile(result.File);
-    },[])
+    }, [])
+
+    function checkInput(p) {
+        if (p.toString().includes("*")) {
+            return false;
+        }
+        if (p.toString().includes("\"")) {
+            return false;
+        }
+        if (p.toString().includes("\'")) {
+            return false;
+        }
+        if (p.toString().includes("<")) {
+            return false;
+        }
+        return true;
+    }
 
     async function updateHouse(id) {
-        const formData = new FormData();
-        formData.append('city', city);
-        formData.append('price', price);
-        formData.append('kontakt', kontakt);
-        formData.append('description', description);
-        formData.append('size', size);
-        formData.append('file', file);
-        let result = await fetch("http://localhost:8000/api/updatehouse/" + id + "?_method=PUT", {
-            method: 'POST',
-            body: formData
-        });
-        alert("House has been updated");
+
+
+        if (checkInput(file) === false || checkInput(price) === false || checkInput(description) === false
+            || checkInput(size) === false || checkInput(city) === false || checkInput(kontakt) === false) {
+            alert("* \" \' < are forbbiden charakters");
+        } else {
+            const formData = new FormData();
+            formData.append('city', city);
+            formData.append('price', price);
+            formData.append('kontakt', kontakt);
+            formData.append('description', description);
+            formData.append('size', size);
+            formData.append('file', file);
+            let result = await fetch("http://localhost:8000/api/updatehouse/" + id + "?_method=PUT", {
+                method: 'POST',
+                body: formData
+            });
+            alert("House has been updated");
+        }
     }
 
     return (

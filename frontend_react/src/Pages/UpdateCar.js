@@ -28,11 +28,32 @@ function UpdateCar(props)
             setDescription(result.description);
             setModel(result.model);
             setFile(result.File);
-
         
     },[])
 
+    function checkInput(p) {
+        if (p.toString().includes("*")) {
+            return false;
+        }
+        if (p.toString().includes("\"")) {
+            return false;
+        }
+        if (p.toString().includes("\'")) {
+            return false;
+        }
+        if (p.toString().includes("<")) {
+            return false;
+        }
+        return true;
+    }
+
     async function updateCar(id) {
+        if (checkInput(file) === false || checkInput(price) === false || checkInput(description) === false
+                        || checkInput(model) === false || checkInput(name) === false || checkInput(kontakt) === false) {
+                        alert("* \" \' < are forbbiden charakters");
+          } else {
+
+        
         const formData = new FormData();
         formData.append('name', name);
         formData.append('price', price);
@@ -45,6 +66,8 @@ function UpdateCar(props)
             body: formData
         });
         alert("Car has been updated");
+    }
+
     }
 
     return (

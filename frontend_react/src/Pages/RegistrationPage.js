@@ -18,34 +18,54 @@ const RegistrationPage = () => {
         }
     }, [])
 
+    function checkInput(p) {
+        if (p.toString().includes("*")) {
+            return false;
+        }
+        if (p.toString().includes("\"")) {
+            return false;
+        }
+        if (p.toString().includes("\'")) {
+            return false;
+        }
+        if (p.toString().includes("<")) {
+            return false;
+        }
+        return true;
+    }
+
     async function registration() {
         let item = { name, password, email };
 
-        let allUsers = await fetch("http://127.0.0.1:8000/api/allusers");
-        allUsers = await allUsers.json();
-        let users = JSON.stringify(allUsers);
-        if (!email.includes('@')) {
-            alert('Wrong email');
-        } else if (password.toString().length < 8) {
-            alert('Lenght of password must be 8 charakters or more');
+        if (checkInput(name) == false || checkInput(password) == false || checkInput(email) == false) {
+            alert("* \"  \'  < are forbbiden charakters");
         } else {
-            if (!users.includes(email)) {
-                let result = await fetch("http://127.0.0.1:8000/api/register", {
-                    method: 'POST',
-                    body: JSON.stringify(item),
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    }
-                })
-                result = await result.json();
-                localStorage.setItem("user-info", JSON.stringify(result));
-                history.push("/listpage");
+
+            let allUsers = await fetch("http://127.0.0.1:8000/api/allusers");
+            allUsers = await allUsers.json();
+            let users = JSON.stringify(allUsers);
+            if (!email.includes('@')) {
+                alert('Wrong email');
+            } else if (password.toString().length < 8) {
+                alert('Lenght of password must be 8 charakters or more');
             } else {
-                alert('Email exists');
+                if (!users.includes(email)) {
+                    let result = await fetch("http://127.0.0.1:8000/api/register", {
+                        method: 'POST',
+                        body: JSON.stringify(item),
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        }
+                    })
+                    result = await result.json();
+                    localStorage.setItem("user-info", JSON.stringify(result));
+                    history.push("/listpage");
+                } else {
+                    alert('Email exists');
+                }
             }
         }
-
     }
 
     return (

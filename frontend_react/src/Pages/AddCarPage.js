@@ -12,25 +12,48 @@ const AddCarPage = () => {
         const [model, setModel] = useState("");
         let user = JSON.parse(localStorage.getItem('user-info'))
 
-        async function addCar() {
-                const formData = new FormData();
-                formData.append('file', file);
-                formData.append('price', price);
-                formData.append('name', name);
-                formData.append('description', description);
-                formData.append('model', model);
-                formData.append('kontakt', kontakt);
-                formData.append('user_id', user.id);
 
-                if (!isNaN(price) && file && price && description && name && name && kontakt) {
-                        let result = await fetch("http://localhost:8000/api/addcar", {
-                                method: 'POST',
-                                body: formData,
-                                
-                        });
-                        alert("Data has been saved");
+        function checkInput(p) {
+                if (p.toString().includes("*")) {
+                        return false;
+                }
+                if (p.toString().includes("\"")) {
+                        return false;
+                }
+                if (p.toString().includes("\'")) {
+                        return false;
+                }
+                if (p.toString().includes("<")) {
+                        return false;
+                }
+                return true;
+        }
+
+        async function addCar() {
+
+                if (checkInput(file) === false || checkInput(price) === false || checkInput(description) === false
+                        || checkInput(model) === false || checkInput(name) === false || checkInput(kontakt) === false) {
+                        alert("* \" \' < are forbbiden charakters");
                 } else {
-                        alert("Wrong DATA or everything must be filled ");
+                        const formData = new FormData();
+                        formData.append('file', file);
+                        formData.append('price', price);
+                        formData.append('name', name);
+                        formData.append('description', description);
+                        formData.append('model', model);
+                        formData.append('kontakt', kontakt);
+                        formData.append('user_id', user.id);
+
+                        if (!isNaN(price) && file && price && description && name && name && kontakt) {
+                                let result = await fetch("http://localhost:8000/api/addcar", {
+                                        method: 'POST',
+                                        body: formData,
+
+                                });
+                                alert("Data has been saved");
+                        } else {
+                                alert("Wrong DATA or everything must be filled ");
+                        }
                 }
         }
 

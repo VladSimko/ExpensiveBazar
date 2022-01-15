@@ -14,26 +14,53 @@ const ProfilPage = () => {
     const [name, setName] = useState(user.name);
     const [email, setEmail] = useState(user.email);
 
+    function checkInput(p) {
+        if (p.toString().includes("*")) {
+            return false;
+        }
+        if (p.toString().includes("\"")) {
+            return false;
+        }
+        if (p.toString().includes("\'")) {
+            return false;
+        }
+        if (p.toString().includes("<")) {
+            return false;
+        }
+        return true;
+    }
+
     async function deleteUser() {
-        let result = await fetch("http://127.0.0.1:8000/api/deleteuser/" + user.id, {
-            method: 'DELETE'
-        });
-        result = await result.json();
-        localStorage.clear();
-        history.push("/loginpage")
+
+        if (checkInput(name) === false || checkInput(email) === false) {
+            alert("* \" \' < are forbbiden charakters");
+        } else {
+
+            let result = await fetch("http://127.0.0.1:8000/api/deleteuser/" + user.id, {
+                method: 'DELETE'
+            });
+            result = await result.json();
+            localStorage.clear();
+            history.push("/loginpage")
+        }
     }
 
     async function updateUser() {
-        const formData = new FormData();
-        formData.append('name', name);
-        formData.append('email', email);
-        let result = await fetch("http://127.0.0.1:8000/api/updateuser/" + user.id + "?_method=PUT", {
-            method: 'POST',
-            body: formData,
-        });
-        localStorage.clear();
-        history.push("/loginpage")
-        alert("User has been updated");
+        if (checkInput(name) === false || checkInput(email) === false) {
+            alert("* \" \' < are forbbiden charakters");
+        } else {
+
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('email', email);
+            let result = await fetch("http://127.0.0.1:8000/api/updateuser/" + user.id + "?_method=PUT", {
+                method: 'POST',
+                body: formData,
+            });
+            localStorage.clear();
+            history.push("/loginpage")
+            alert("User has been updated");
+        }
     }
 
     return (

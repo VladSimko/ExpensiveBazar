@@ -31,19 +31,40 @@ function UpdateBoat(props) {
 
     }, [])
 
+    function checkInput(p) {
+        if (p.toString().includes("*")) {
+            return false;
+        }
+        if (p.toString().includes("\"")) {
+            return false;
+        }
+        if (p.toString().includes("\'")) {
+            return false;
+        }
+        if (p.toString().includes("<")) {
+            return false;
+        }
+        return true;
+    }
+
     async function updateBoat(id) {
-        const formData = new FormData();
-        formData.append('name', name);
-        formData.append('price', price);
-        formData.append('kontakt', kontakt);
-        formData.append('description', description);
-        formData.append('size', size);
-        formData.append('file', file);
-        let result = await fetch("http://127.0.0.1:8000/api/updateboat/" + id + "?_method=PUT", {
-            method: 'POST',
-            body: formData
-        });
-        alert("Boat has been updated");
+        if (checkInput(file) === false || checkInput(price) === false || checkInput(description) === false
+            || checkInput(size) === false || checkInput(name) === false || checkInput(kontakt) === false) {
+            alert("* \" \' < are forbbiden charakters");
+        } else {
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('price', price);
+            formData.append('kontakt', kontakt);
+            formData.append('description', description);
+            formData.append('size', size);
+            formData.append('file', file);
+            let result = await fetch("http://127.0.0.1:8000/api/updateboat/" + id + "?_method=PUT", {
+                method: 'POST',
+                body: formData
+            });
+            alert("Boat has been updated");
+        }
     }
 
     return (

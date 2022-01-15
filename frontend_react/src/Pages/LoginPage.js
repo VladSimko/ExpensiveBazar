@@ -16,27 +16,48 @@ const LoginPage = () => {
         }
     }, [])
 
+    function checkInput(p) {
+        if (p.toString().includes("*")) {
+            return false;
+        }
+        if (p.toString().includes("\"")) {
+            return false;
+        }
+        if (p.toString().includes("\'")) {
+            return false;
+        }
+        if (p.toString().includes("<")) {
+            return false;
+        }
+        return true;
+    }
+
     async function login() {
         let item = { email, password };
-        let result = await fetch("http://localhost:8000/api/login", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(item)
-        });
-        result = await result.json()
-        localStorage.setItem("user-info", JSON.stringify(result))
-        let user = JSON.parse(localStorage.getItem('user-info'))
 
-        if (user.name === undefined) {
-            alert("Wrong email or password")
-            localStorage.clear();
+        if (checkInput(email) === false || checkInput(password) === false) {
+            alert("* \" \' < are forbbiden charakters");
         } else {
-            history.push("/listpage")
-        }
 
+            let result = await fetch("http://localhost:8000/api/login", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(item)
+            });
+            result = await result.json()
+            localStorage.setItem("user-info", JSON.stringify(result))
+            let user = JSON.parse(localStorage.getItem('user-info'))
+
+            if (user.name === undefined) {
+                alert("Wrong email or password")
+                localStorage.clear();
+            } else {
+                history.push("/listpage")
+            }
+        }
 
     }
 

@@ -13,24 +13,47 @@ const AddBoatPage = () => {
 
         let user = JSON.parse(localStorage.getItem('user-info'))
 
-        async function addBoat() {
-                const formData = new FormData();
-                formData.append('file', file);
-                formData.append('price', price);
-                formData.append('description', description);
-                formData.append('size', size);
-                formData.append('name', name);
-                formData.append('kontakt', kontakt);
-                formData.append('user_id', user.id);
+        function checkInput(p) {
+                if (p.toString().includes("*")) {
+                        return false;
+                }
+                if (p.toString().includes("\"")) {
+                        return false;
+                }
+                if (p.toString().includes("\'")) {
+                        return false;
+                }
+                if (p.toString().includes("<")) {
+                        return false;
+                }
+                return true;
+        }
 
-                if (!isNaN(price) && !isNaN(size) && file && price && description && size && name && kontakt ) {
-                        let result = await fetch("http://localhost:8000/api/addboat", {
-                                method: 'POST',
-                                body: formData
-                        });
-                        alert("Data has been saved");
+        async function addBoat() {
+
+                if (checkInput(file) === false || checkInput(price) === false || checkInput(description) === false
+                        || checkInput(size) === false || checkInput(name) === false || checkInput(kontakt) === false) {
+                        alert("* \" \' < are forbbiden charakters");
                 } else {
-                        alert("Wrong DATA or everything must be filled ");
+
+                        const formData = new FormData();
+                        formData.append('file', file);
+                        formData.append('price', price);
+                        formData.append('description', description);
+                        formData.append('size', size);
+                        formData.append('name', name);
+                        formData.append('kontakt', kontakt);
+                        formData.append('user_id', user.id);
+
+                        if (!isNaN(price) && !isNaN(size) && file && price && description && size && name && kontakt) {
+                                let result = await fetch("http://localhost:8000/api/addboat", {
+                                        method: 'POST',
+                                        body: formData
+                                });
+                                alert("Data has been saved");
+                        } else {
+                                alert("Wrong DATA or everything must be filled ");
+                        }
                 }
         }
 
@@ -45,7 +68,7 @@ const AddBoatPage = () => {
                                         <div className="GreySection" >
                                                 <div className="row">
                                                         <div className="col-sm-6 CenterTextGreySel">
-                                                        <input type="text" className="form-control" placeholder="name"
+                                                                <input type="text" className="form-control" placeholder="name"
                                                                         onChange={(e) => setName(e.target.value)}
                                                                 /> <br />
                                                                 <input type="text" className="form-control" placeholder="size"
@@ -55,7 +78,7 @@ const AddBoatPage = () => {
                                                                         onChange={(e) => setFile(e.target.files[0])} /> <br />
                                                                 <input type="text" className="form-control" placeholder="price"
                                                                         onChange={(e) => setPrice(e.target.value)} /> <br />
-                                                                        <input type="text" className="form-control" placeholder="kontakt"
+                                                                <input type="text" className="form-control" placeholder="kontakt"
                                                                         onChange={(e) => setKontakt(e.target.value)} /> <br />
                                                                 <input type="text" className="form-control" placeholder="description"
                                                                         onChange={(e) => setDescription(e.target.value)} />
