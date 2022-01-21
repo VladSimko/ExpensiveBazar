@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\HouseController;
 use App\Http\Controllers\BoatController;
+use App\Http\Controllers\MessageController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -41,3 +42,5 @@ Route::put('updateboat/{id}',[BoatController::class,'updateBoat']);
 Route::delete('deleteuser/{id}',[UserController::class,'deleteUser']);
 Route::put('updateuser/{id}',[UserController::class,'updateUser']);
 Route::get('allusers',[UserController::class,'allUsers']);
+Route::post('addmessage',[MessageController::class,'addMessage']);
+Route::get('listmessages',[MessageController::class,'listMessages']);

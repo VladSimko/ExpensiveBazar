@@ -21,6 +21,7 @@ import UpdateCar from './Pages/UpdateCar';
 import UpdateHouse from './Pages/UpdateHouse';
 import UpdateBoat from './Pages/UpdateBoat';
 import ProfilPage from './Pages/ProfilPage';
+import ChatPage from './Pages/ChatPage'
 
 function App() {
   return (
@@ -71,6 +72,9 @@ function App() {
         </Route>
         <Route path="/profilpage">
             <ProtectedPage Cmp={ProfilPage}/>
+        </Route>
+        <Route path="/chatpage">
+            <ProtectedPage Cmp={ChatPage}/>
         </Route>
       </BrowserRouter>
       
