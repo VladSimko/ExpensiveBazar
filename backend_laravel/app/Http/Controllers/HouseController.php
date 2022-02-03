@@ -10,6 +10,18 @@ class HouseController extends Controller
     //
     function addHouse(Request $req)
     {
+        function checkInput($p) {
+            if(str_contains($p, '<') == true || str_contains($p, '*') == true || str_contains($p, '\'') == true || str_contains($p, '"') == true) {
+             return false;
+            } else {
+             return true;
+            }
+        }
+        if(checkInput($req->input('user_id')) == false || checkInput($req->input('city')) == false ||checkInput($req->input('size')) == false 
+            ||checkInput($req->input('description')) == false ||checkInput($req->input('price')) == false  ||checkInput($req->input('kontakt')) == false)
+            {
+            return ["error"=>"wrong input"];
+        } else {
         $house = new House;
         $house->user_id = $req->input('user_id');
         $house->city = $req->input('city');
@@ -20,6 +32,7 @@ class HouseController extends Controller
         $house->kontakt = $req->input('kontakt');
         $house->save();
         return $house;
+        }
     }
 
     function listHouse()

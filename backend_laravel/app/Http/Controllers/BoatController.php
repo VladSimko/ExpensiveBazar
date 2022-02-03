@@ -11,6 +11,18 @@ class BoatController extends Controller
     //
     function addBoat(Request $req)
     {
+        function checkInput($p) {
+            if(str_contains($p, '<') == true || str_contains($p, '*') == true || str_contains($p, '\'') == true || str_contains($p, '"') == true) {
+             return false;
+            } else {
+             return true;
+            }
+        }
+        if(checkInput($req->input('user_id')) == false || checkInput($req->input('name')) == false ||checkInput($req->input('size')) == false 
+            ||checkInput($req->input('description')) == false ||checkInput($req->input('price')) == false  ||checkInput($req->input('kontakt')) == false)
+            {
+            return ["error"=>"wrong input"];
+        } else {
         $boat = new Boat;
         $boat->user_id = $req->input('user_id');
         $boat->name = $req->input('name');
@@ -21,6 +33,7 @@ class BoatController extends Controller
         $boat->kontakt = $req->input('kontakt');
         $boat->save();
         return $boat;
+        }
     }
     function listBoat()
     {

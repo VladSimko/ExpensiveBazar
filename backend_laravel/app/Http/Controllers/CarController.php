@@ -12,6 +12,18 @@ class CarController extends Controller
 
     function addCar(Request $req)
     {
+        function checkInput($p) {
+            if(str_contains($p, '<') == true || str_contains($p, '*') == true || str_contains($p, '\'') == true || str_contains($p, '"') == true) {
+             return false;
+            } else {
+             return true;
+            }
+        }
+        if(checkInput($req->input('user_id')) == false || checkInput($req->input('name')) == false ||checkInput($req->input('model')) == false 
+            ||checkInput($req->input('description')) == false ||checkInput($req->input('price')) == false  ||checkInput($req->input('kontakt')) == false)
+            {
+            return ["error"=>"wrong input"];
+        } else {
         $car = new Car;
         $car->user_id = $req->input('user_id');
         $car->name = $req->input('name');
@@ -22,6 +34,7 @@ class CarController extends Controller
         $car->file_path=$req->file('file')->store('bazar');
         $car->save();
         return $car;
+        }
     }
 
     function listCar()
